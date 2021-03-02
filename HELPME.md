@@ -1,21 +1,34 @@
+# Configurar o git
+git config --global user.name  "Fulano de Tal"
+git config --global user.email "FulanoDeTal@email.com.br"
 
 # Listar configuração
 git config --global user.name
 git config --global user.email
 git config --list
 
-# Inicializar um repositório local na pasta corrente
+# Criando um novo repositório local na pasta corrente e enviar para o Repositorio remoto
 git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/AlexandreSkinner/Treino.git
+git push -u origin master
+
+# Inicializar um repositório remoto a partir de um repositorio local existente
+git remote add origin https://github.com/AlexandreSkinner/exemplo.git
+git branch -M master
+git push -u origin master
+
+# Clonando um repositório Remoto para um repositório local
+git clone https://github.com/AlexandreSkinner/treino.git
 
 # Configurar o GITHUB como repositório remoto
 git remote add origin https://github.com/alexandreskinner/<repositorio>.git
-git remote add origin https://github.com/anapaulatm/treino.git
+git remote add origin https://github.com/anapaulatm/Treino.git
 
 # Verificar qual o repositório remoto está configurado para um determinado repositório local
 git remote -v
-
-# Clonando um repositório remoto 
-git clone https://github.com/alexandreskinner/treino.git
 
 # Enviando modificações do repositório local para o repositório remoto
 git push <destino> <origem>
@@ -32,7 +45,7 @@ git fetch origin
 # Verificar o status da working area, staging are e repository
 git status
 
-# Colocar na staging area (trackear)
+# Colocar arquivo na staging area (trackear)
 git add <nome.ext>
 git add -A
 git add --all
