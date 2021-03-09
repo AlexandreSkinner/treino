@@ -39,7 +39,7 @@ $ git push <destino> <origem>
 $ git push origin master
 $ git push -u origin master
 
-# Atualizando seu repositorio local coma as modificações do repositorio remoto (faz merge automaticamente)
+# Atualizando seu repositorio local com as modificações do repositorio remoto (faz merge automaticamente)
 $ git pull
 
 # Busca alterações que tenham sido feita no repositorio remoto para seu repositorio local (não faz merge)
@@ -64,6 +64,7 @@ $ git log
 $ git log --oneline
 $ git log --oneline --decorate --all
 $ git log --oneline --decorate --all --graph
+$ git log --pretty=format:'%C(yellow)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
 
 # Crira um novo branch 
 $ git branch <NomeBranch>
@@ -115,14 +116,18 @@ $ git reset <HashDoCommit> --<opção>
 $ git reset 8643aee --<opção> 
 $ git reset HEAD~1 --<opção>
 
-# 1) Opção --soft retorna os arquivos do commit para Stage e aponta o HEAD para o commit 8643aee ou HEAD~1 
+# 1) Opção --soft 
+# Retorna os arquivos, para a Stage, de todos os commit anteriores ao commit identificado NO COMANDO pelo seu ID,
+# codigo HASH ou pela posição relativa ao ponteiro HEAD (HEAD~1, HEAD~2, HEAD~N). Preserva o conteúdo dos arquivos 
 $ git reset 8643aee --soft   ou
 $ git reset HEAD~1  --soft
 
-# 2) Opção --mixed retorna os arquivos do commit para o Workspace direto mantendo as alterações do commiit desfeito
+# 2) Opção --mixed 
+# Retorna os arquivos do commit direto para o Workspace mantendo as alterações do commiit desfeito
 $ git reset HEAD~1 --mixed
 
-# 2) Opção --hard retorna os arquivos do commit para o Workspace direto sem as alterações que foram feitas
+# 2) Opção --hard 
+# Retorna os arquivos do commit direto para o Workspace sem as alterações que foram feitas no commit desfeito
 $ git reset HEAD~1 --hard
 
 
