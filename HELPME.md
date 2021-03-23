@@ -137,7 +137,7 @@ $ git reset HEAD~1  --soft
 # Retorna os arquivos do commit direto para o Workspace mantendo as alterações do commit desfeito
 $ git reset HEAD~1 --mixed
 
-# 2) Opção --hard 
+# 3) Opção --hard 
 # Retorna os arquivos do commit direto para o Workspace sem as alterações que foram feitas no commit desfeito
 $ git reset HEAD~1 --hard
 
