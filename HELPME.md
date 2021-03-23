@@ -89,6 +89,12 @@ $ git branch checkout <NomeBranch>
 # Excluir uma branch depois que realizamos merge
 $ git branch -d <NomeBranch>
 
+# Exibe as branch locais e remotas
+$ git branch -a
+* master
+  remotes/origin/master
+
+
 # Merge (Mesclar) - posicionado na master
 $ git merge <NomeBranch>
 
