@@ -34,6 +34,9 @@ $ git remote add origin https://github.com/alexandreskinner/Treino.git
 # Verificar qual o repositório remoto está configurado para um determinado repositório local
 $ git remote -v
 
+# Remove o ponteiramento <new-remote-repo> do repositorio remoto
+$ git remote remove <new-remote-repo>
+
 # Enviando modificações do repositório local para o repositório remoto
 $ git push <destino> <origem>
 $ git push origin master
@@ -83,8 +86,11 @@ $ git log --pretty=format:'%C(yellow)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(
 $ git branch <NomeBranch>
 $ git checkout -b <NomeBranch> (Cria a branch e ja muda para ela)
 
+# Renomeia a branch atual para o nome fornecido
+$ git branch -m <branch>
+
 # Mudar de branch
-$ git branch checkout <NomeBranch>
+$ git checkout <NomeBranch>
 
 # Excluir uma branch depois que realizamos merge
 $ git branch -d <NomeBranch>
@@ -94,6 +100,15 @@ $ git branch -a
 * master
   remotes/origin/master
 
+# Exibe as branch locais e remotas - indica também ID do ultimo commit em cada branch  
+$ git branch -a -v
+* master                693373a Alteração no HELPME.md - Inclusão de mais comandos git
+  remotes/origin/master 693373a Alteração no HELPME.md - Inclusão de mais comandos git
+
+# Adicionar repo remoto à configuração do repo local
+$ git remote add new-remote-repo https://github.com/alexandreskinner/Treino.git
+$ git branch develop                   ==> Cria nova branch
+$ git push new-remote-repo develop     ==> Empurra a nova branch develop para o repo remoto
 
 # Merge (Mesclar) - posicionado na master
 $ git merge <NomeBranch>
