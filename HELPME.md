@@ -7,7 +7,25 @@ $ git config --global user.name
 $ git config --global user.email
 $ git config --list
 
-1) CRIANDO PROJETO NOVO
+## Existem 3 niveis system (maquina), global(usuário) e local(projeto)
+$ git config --global --edit => Edita variaveis do usuário no VScode
+
+1) CONFIGURAÇÕES NO VSCode
+--------------------------
+## Configurações que uso ( arquivo - C:\Users\ADMIN\.gitconfig )
+[user]
+	name  = Alexandre Skinner
+	email = AlexandreSkinner@tmassessoria.com.br
+[alias]
+  l  = !git log --pretty=format:'%C(yellow)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+	lo = !git log --oneline
+[push]
+  followTags = true     (Faz com que o comando push normal envie ao repo remoto as Tags nomeadas) (*)
+[i18n]
+	logOutputEncoding = utf-8
+
+
+2) CRIANDO PROJETO NOVO
 -----------------------
 # Criando repositório local na pasta corrente e enviar (empurrando) para o Repositorio remoto
 $ git init
@@ -20,9 +38,12 @@ $ git push -u origin master
 # Inicializar um repositório remoto a partir de um repositório local já existente
 $ git remote add origin https://github.com/AlexandreSkinner/Treino.git
 $ git branch -M master
-$ git push -u origin master
+$ git push -u origin master   (
+  
+## NOTA: A chave -u no puch é utilizado a primeira vez para conectar repo local ao remoto, 
+## nos próximos push não é mais necessário.
 
-2) CRIANDO PROJETO A PARTIR REPOSITÓRIO REMOTO
+3) CRIANDO PROJETO A PARTIR REPOSITÓRIO REMOTO
 ----------------------------------------------
 # Clonando um repositório Remoto para um repositório local
 $ git clone https://github.com/AlexandreSkinner/treino.git
@@ -31,6 +52,8 @@ $ git clone https://github.com/AlexandreSkinner/treino.git
 $ git remote add origin https://github.com/alexandreskinner/<repositorio>.git
 $ git remote add origin https://github.com/alexandreskinner/Treino.git
 
+4) COMANDOS EM GERAL
+--------------------
 # Verificar qual o repositório remoto está configurado para um determinado repositório local
 $ git remote -v
 
@@ -40,7 +63,7 @@ $ git remote remove <new-remote-repo>
 # Enviando modificações do repositório local para o repositório remoto
 $ git push <destino> <origem>
 $ git push origin master
-$ git push -u origin master
+$ git push 
 
 # Atualizando seu repositorio local com as modificações do repositorio remoto (faz merge automaticamente)
 $ git pull
@@ -69,7 +92,9 @@ $ git commit -m "Descrição do commit"
 
 (A) Added - Arquivo novo foi adicionado na Stage Area, por tanto preparados para o próximo commit
 
-Há duas colunas de status na saída: a coluna da esquerda indica o status da área de stage e a coluna da direita indica o status do diretório de trabalho
+## Há duas colunas de status na saída: 
+ - esquerda: indica o status da área de stage e a coluna
+ - direita : indica o status do diretório de trabalho
 
 Exemplo:
  M HELPME.md     ==> Modificado na work stage
@@ -82,7 +107,10 @@ $ git log --oneline --decorate --all
 $ git log --oneline --decorate --all --graph
 $ git log --pretty=format:'%C(yellow)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
 
-# Crira um novo branch 
+# Exibe o ID de cada commit / commit ammend / restet realizados
+$ git reflog
+
+# Crira um novo branch a partir da brach corrente
 $ git branch <NomeBranch>
 $ git checkout -b <NomeBranch> (Cria a branch e ja muda para ela)
 
@@ -93,7 +121,11 @@ $ git branch -m <branch>
 $ git checkout <NomeBranch>
 
 # Excluir uma branch depois que realizamos merge
-$ git branch -d <NomeBranch>
+$ git branch -d <NomeBranch> (Exclui apenas se ela estiver alinhada com a master ou branch remota)
+$ git branch -D <NomeBranch> (Exclui incondicionalmente)
+
+# Exibe as branch locais
+$ git branch
 
 # Exibe as branch locais e remotas
 $ git branch -a
@@ -173,3 +205,22 @@ $ git reset HEAD~1
 # Reverte todo conteúdo dos arquivo que estejam na Stage ou Workspace area, sendo
 # que os arquivos da Stage retornam para a Workspace
 $ git reset --hard
+
+# Criação de TAG nomeada
+$ git tag 1.0 –m “realease 1.0”
+
+## Associar uma TAG a um commit qualquer
+$ git tag -a "0.1.beta" -m "realease 0.1.beta" <ID commit>
+$ git tag -a "0.1.beta" -m "realease 0.1.beta" 8643aee
+
+## Removendo uma TAG
+git tag -d <"TagName">
+$ git tag -d "1.0"
+
+## Normalmente o push não envia as Tags ao repositório remoto, para que isso possa ser feito 
+## temos que incluir no comanda a flag abaixo que enviará apenas tags anotadas (*)
+git push origin master --follow-tags
+
+## Remover uma Tag localmente e do repositorio remoto
+$ git tag -d "1.0"                 ==> Exclui localmente
+$ git push --delete origin "1.0"   ==> Exclui remotamente
