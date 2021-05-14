@@ -35,10 +35,14 @@ $ git branch -M master
 $ git remote add origin https://github.com/AlexandreSkinner/Treino.git
 $ git push -u origin master
 
+# Acesso com ssh
+$ git remote remove origin  (remove o remove origin anterior)
+$ git remote add origin git@github.com:AlexandreSkinner/Treino.git
+
 # Inicializar um repositório remoto a partir de um repositório local já existente
 $ git remote add origin https://github.com/AlexandreSkinner/Treino.git
 $ git branch -M master
-$ git push -u origin master   (
+$ git push -u origin master  
   
 ## NOTA: A chave -u no puch é utilizado a primeira vez para conectar repo local ao remoto, 
 ## nos próximos push não é mais necessário.
@@ -141,6 +145,7 @@ $ git branch -a -v
 $ git remote add new-remote-repo https://github.com/alexandreskinner/Treino.git
 $ git branch develop                   ==> Cria nova branch
 $ git push new-remote-repo develop     ==> Empurra a nova branch develop para o repo remoto
+
 
 # Merge (Mesclar) - posicionado na master
 $ git merge <NomeBranch>
