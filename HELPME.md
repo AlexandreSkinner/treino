@@ -38,6 +38,7 @@ $ git push -u origin master
 # Acesso com ssh
 $ git remote remove origin  (remove o remove origin anterior)
 $ git remote add origin git@github.com:AlexandreSkinner/Treino.git
+$ git push --set-upstream origin master
 
 # Inicializar um repositório remoto a partir de um repositório local já existente
 $ git remote add origin https://github.com/AlexandreSkinner/Treino.git
