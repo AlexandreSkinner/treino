@@ -36,7 +36,7 @@ $ git remote add origin https://github.com/AlexandreSkinner/Treino.git
 $ git push -u origin master
 
 # Acesso com ssh
-$ git remote remove origin  (remove o remove origin anterior)
+$ git remote remove origin  (remove o remote origin anterior)
 $ git remote add origin git@github.com:AlexandreSkinner/Treino.git
 $ git push --set-upstream origin master
 
